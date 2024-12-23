@@ -1,3 +1,6 @@
+using AdoDotNet.WebUi.Helpers;
+using Scalar.AspNetCore;
+
 namespace AdoDotNet.WebUi;
 
 public class Program
@@ -11,6 +14,12 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        // Added OpenAPI Support
+        builder.Services.AddOpenApi();
+
+        // Check For Database Existence
+        DatabaseHelper.EnsureDatabase();
 
         //-----------------------------------------------//
         //              MIDDLEWARE-PIPELINE SECTION
@@ -26,8 +35,14 @@ public class Program
             app.UseHsts();
         }
 
+        if (app.Environment.IsDevelopment())
+        {
+            app.MapOpenApi();
+            app.MapScalarApiReference();
+        }
+
         app.UseHttpsRedirection();
-        app.UseRouting();  
+        app.UseRouting();
 
         app.UseAuthorization();
 
@@ -40,3 +55,8 @@ public class Program
         app.Run();
     }
 }
+
+
+
+
+
