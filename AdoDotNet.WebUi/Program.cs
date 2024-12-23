@@ -4,10 +4,17 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        //-----------------------------------------------//
+        //              SERVICES SECTION
+        //-----------------------------------------------//
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+
+        //-----------------------------------------------//
+        //              MIDDLEWARE-PIPELINE SECTION
+        //-----------------------------------------------//
 
         var app = builder.Build();
 
@@ -20,7 +27,7 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-        app.UseRouting();
+        app.UseRouting();  
 
         app.UseAuthorization();
 
