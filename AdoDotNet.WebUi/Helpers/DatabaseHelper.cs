@@ -10,7 +10,7 @@ namespace AdoDotNet.WebUi.Helpers
     {
         private static string DatabaseFileName = "AppData.db"; // Normal String
 
-        private static string ConnectionString = $"Data Source={DatabaseFileName};"; // String Interpolation
+        public static string ConnectionString = $"Data Source={DatabaseFileName};"; // String Interpolation
 
         public static void EnsureDatabase()
         {
@@ -20,7 +20,7 @@ namespace AdoDotNet.WebUi.Helpers
                 {
                     connection.Open();
                     var command = connection.CreateCommand();
-                    // Varbatin String
+                    // Verbatim String
                     command.CommandText = @"
                         CREATE TABLE IF NOT EXISTS Products (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,

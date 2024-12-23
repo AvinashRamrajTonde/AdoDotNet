@@ -1,4 +1,5 @@
 using AdoDotNet.WebUi.Helpers;
+using AdoDotNet.WebUi.Repositories;
 using Scalar.AspNetCore;
 
 namespace AdoDotNet.WebUi;
@@ -20,6 +21,9 @@ public class Program
 
         // Check For Database Existence
         DatabaseHelper.EnsureDatabase();
+        
+        // Added a Scoped Service of ProductRepository
+        builder.Services.AddScoped<ProductRepository>();
 
         //-----------------------------------------------//
         //              MIDDLEWARE-PIPELINE SECTION
