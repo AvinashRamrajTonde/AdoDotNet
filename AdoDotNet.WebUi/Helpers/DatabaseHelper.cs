@@ -29,13 +29,9 @@ namespace AdoDotNet.WebUi.Helpers
                             Description TEXT
                         );
                     ";
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQuery(); // Execute query at database level
                 }
-            }
-
-
-            
+            }            
         }
-
     }
 }
